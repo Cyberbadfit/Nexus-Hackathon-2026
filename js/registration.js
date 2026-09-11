@@ -132,7 +132,7 @@ function showTeamCreatedModal(data) {
     const text = encodeURIComponent(
       `🚀 Join my team "${data.teamName}" for SRM Hackathon 2026 (${normalizedTrack})!\n` +
       `Use my unique student verification code: ${data.uniqueCode}\n` +
-      `Register now on the SRM Hackathon Portal!`
+      `Register now on the SRM Hackathon Portal https://nexus-hackathon-2026-three.vercel.app/#join`
     );
     shareBtn.href = `https://api.whatsapp.com/send?text=${text}`;
   }
