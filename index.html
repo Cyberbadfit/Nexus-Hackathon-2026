@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRM HACKATHON 2026 // National Edition & Registration Portal</title>
+  <meta name="description"
+    content="Official SRM Hackathon 2026 Registration and Student Portal. 36-Hour National Hackathon across AI / Machine Learning, Data Science, DevOps & Cloud, Computer Vision, and Full Stack Development.">
+
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@400..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!-- Cyber Navigation Header -->
+  <header class="cyber-nav">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo">
+        <span class="brand-badge">NEXUS</span>
+        <span class="brand-title"><span class="text-cyan">SRM</span> NEXXUS</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link active"><span class="material-symbols-outlined"
+              style="font-size: 1rem;">terminal</span> Home</a></li>
+        <li><a href="#tracks" class="nav-link"><span class="material-symbols-outlined"
+              style="font-size: 1rem;">category</span> Tracks</a></li>
+        <li><a href="#register" class="nav-link"><span class="material-symbols-outlined"
+              style="font-size: 1rem;">group_add</span> Create Team</a></li>
+        <li><a href="#join" class="nav-link"><span class="material-symbols-outlined" style="font-size: 1rem;">key</span>
+            Join with Code</a></li>
+        <li><a href="#updates" class="nav-link"><span class="material-symbols-outlined"
+              style="font-size: 1rem;">campaign</span> Live Updates</a></li>
+        <li><a href="#status" class="nav-link"><span class="material-symbols-outlined"
+              style="font-size: 1rem;">badge</span> Check Status</a></li>
+        <li><a href="#faq" class="nav-link"><span class="material-symbols-outlined"
+              style="font-size: 1rem;">help_outline</span> Rules & FAQ</a></li>
+        <li><a href="#contact" class="nav-link"><span class="material-symbols-outlined"
+              style="font-size: 1rem;">support_agent</span> Helpdesk</a></li>
+      </ul>
+
+      <!-- Action Items & Admin Access -->
+      <div class="nav-actions">
+        <div class="status-pill">
+          <span class="pulse-dot"></span>
+          <span>REGISTRATION OPEN</span>
+        </div>
+        <a href="admin.html" class="btn btn-outline-cyan btn-sm">
+          <span class="material-symbols-outlined" style="font-size: 1rem;">admin_panel_settings</span>
+          <span>ADMIN</span>
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Portal Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section" style="padding: 2.5rem 0 3.5rem;">
+      <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+        <div
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0, 240, 255, 0.08); border: 1px solid var(--border-neon); padding: 0.35rem 1rem; margin-bottom: 1.5rem;">
+          <span class="pulse-dot"></span>
+          <span style="font-size: 0.78rem; color: var(--primary); letter-spacing: 0.08em; font-weight: 700;">SRM
+            INSTITUTE OF SCIENCE AND TECHNOLOGY </span>
+        </div>
+
+        <h1 style="color: var(--text-bright); margin-bottom: 1rem; font-size: clamp(2.2rem, 6vw, 4rem);">
+          NEXUS HACKATHON 2026 <br>
+          <span class="text-cyan glow-cyan">Code the Future Solve the Impossible</span>
+        </h1>
+
+        <p
+          style="color: var(--text-dim); font-size: 1.05rem; max-width: 700px; margin: 0 auto 2.5rem; line-height: 1.7;">
+          36 Hours of Non-Stop Innovation. Compete across 5 high-stakes tracks, deploy cutting-edge software and
+          hardware prototypes, and unlock over ₹40,00,000+ in bounties and cloud credits.
+        </p>
+
+        <!-- Live Countdown Timer -->
+        <div class="countdown-container"
+          style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap;">
+          <div class="cyber-card countdown-card" style="padding: 1rem 1.25rem; min-width: 85px; text-align: center;">
+            <div id="cd-days" class="num text-cyan font-display" style="font-size: 2.2rem; font-weight: 800;">00</div>
+            <div class="label text-muted" style="font-size: 0.72rem; letter-spacing: 0.08em;">DAYS</div>
+          </div>
+          <div class="cyber-card countdown-card" style="padding: 1rem 1.25rem; min-width: 85px; text-align: center;">
+            <div id="cd-hours" class="num text-cyan font-display" style="font-size: 2.2rem; font-weight: 800;">00</div>
+            <div class="label text-muted" style="font-size: 0.72rem; letter-spacing: 0.08em;">HOURS</div>
+          </div>
+          <div class="cyber-card countdown-card" style="padding: 1rem 1.25rem; min-width: 85px; text-align: center;">
+            <div id="cd-minutes" class="num text-cyan font-display" style="font-size: 2.2rem; font-weight: 800;">00
+            </div>
+            <div class="label text-muted" style="font-size: 0.72rem; letter-spacing: 0.08em;">MINS</div>
+          </div>
+          <div class="cyber-card countdown-card" style="padding: 1rem 1.25rem; min-width: 85px; text-align: center;">
+            <div id="cd-seconds" class="num text-green font-display" style="font-size: 2.2rem; font-weight: 800;">00
+            </div>
+            <div class="label text-muted" style="font-size: 0.72rem; letter-spacing: 0.08em;">SECS</div>
+          </div>
+        </div>
+
+        <!-- Quick CTAs -->
+        <div class="hero-actions" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <a href="#register" class="btn btn-primary">
+            <span class="material-symbols-outlined">group_add</span>
+            <span>CREATE SQUAD (LEADER)</span>
+          </a>
+          <a href="#join" class="btn btn-outline-cyan">
+            <span class="material-symbols-outlined">vpn_key</span>
+            <span>JOIN WITH CODE</span>
+          </a>
+          <a href="#status" class="btn btn-outline-green">
+            <span class="material-symbols-outlined">search_check</span>
+            <span>CHECK STATUS</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid-4" style="margin-top: 3.5rem;">
+        <div class="cyber-card corner-accent">
+          <div style="font-size: 0.75rem; color: var(--text-dim);">Certificate of Excellence</div>
+          <div class="font-display text-cyan" style="font-size: 1.8rem; font-weight: 800; margin-top: 0.25rem;">
+            Nexus Hackathon </div>
+          <div style="font-size: 0.75rem; color: var(--secondary); margin-top: 0.25rem;">Winner Certificate</div>
+        </div>
+        <div class="cyber-card corner-accent">
+          <div style="font-size: 0.75rem; color: var(--text-dim);">CHALLENGE TRACKS</div>
+          <div class="font-display text-bright" style="font-size: 1.8rem; font-weight: 800; margin-top: 0.25rem;">05
+            TRACKS</div>
+          <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 0.25rem;">Hardware & Software</div>
+        </div>
+        <div class="cyber-card corner-accent">
+          <div style="font-size: 0.75rem; color: var(--text-dim);">HACK DURATION</div>
+          <div class="font-display text-green" style="font-size: 1.8rem; font-weight: 800; margin-top: 0.25rem;">36
+            HOURS</div>
+          <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 0.25rem;">On-Campus Non-Stop</div>
+        </div>
+        <div class="cyber-card corner-accent">
+          <div style="font-size: 0.75rem; color: var(--text-dim);">PARTICIPATING SQUADS</div>
+          <div class="font-display text-purple" style="font-size: 1.8rem; font-weight: 800; margin-top: 0.25rem;">25+
+            TEAMS</div>
+          <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 0.25rem;">SRM ONLY</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRACKS SECTION -->
+    <section id="tracks" style="padding: 3rem 0; border-top: 1px solid var(--border);">
+      <div style="margin-bottom: 2rem;">
+        <div
+          style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); font-size: 0.8rem; margin-bottom: 0.5rem;">
+          <span class="material-symbols-outlined">tune</span> TRACK SPECIFICATIONS
+        </div>
+        <h2>CHOOSE YOUR ARENA</h2>
+        <p class="text-muted" style="font-size: 0.9rem; margin-top: 0.25rem;">Select your domain of mastery and engineer
+          next-generation solutions.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Track 1 -->
+        <div class="cyber-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <span class="badge badge-cyan">TRACK 01</span>
+            <span class="material-symbols-outlined text-cyan" style="font-size: 2rem;">psychology</span>
+          </div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">AI / MACHINE LEARNING</h3>
+          <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.25rem;">
+            Intelligent systems, predictive models, generative AI, NLP, AI agents, and machine learning solutions for
+            real-world challenges.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem;">
+            <span class="badge badge-cyan">PYTHON</span>
+            <span class="badge badge-cyan">PYTORCH</span>
+            <span class="badge badge-cyan">LLMs</span>
+          </div>
+          <button class="btn btn-outline-cyan btn-sm btn-select-track" data-track="AI / MACHINE LEARNING"
+            style="width: 100%;">
+            SELECT THIS TRACK
+          </button>
+        </div>
+
+        <!-- Track 2 -->
+        <div class="cyber-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <span class="badge badge-purple">TRACK 02</span>
+            <span class="material-symbols-outlined text-purple" style="font-size: 2rem;">analytics</span>
+          </div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">DATA SCIENCE</h3>
+          <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.25rem;">
+            Transform real-world data into actionable insights through analytics, predictive modeling, visualization, and intelligent decision-making.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem;">
+            <span class="badge badge-purple">PYTHON</span>
+            <span class="badge badge-purple">PANDAS</span>
+            <span class="badge badge-purple">POWER BI</span>
+          </div>
+          <button class="btn btn-outline-cyan btn-sm btn-select-track" data-track="DATA SCIENCE"
+            style="width: 100%;">
+            SELECT THIS TRACK
+          </button>
+        </div>
+
+        <!-- Track 3 -->
+        <div class="cyber-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <span class="badge badge-amber">TRACK 03</span>
+            <span class="material-symbols-outlined text-amber" style="font-size: 2rem;">cloud_sync</span>
+          </div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">DEVOPS & CLOUD</h3>
+          <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.25rem;">
+            Build, automate, deploy, and scale modern applications with CI/CD pipelines, cloud infrastructure, containers, and intelligent monitoring.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem;">
+            <span class="badge badge-amber">DOCKER</span>
+            <span class="badge badge-amber">KUBERNETES</span>
+            <span class="badge badge-amber">AWS</span>
+          </div>
+          <button class="btn btn-outline-cyan btn-sm btn-select-track" data-track="DEVOPS & CLOUD"
+            style="width: 100%;">
+            SELECT THIS TRACK
+          </button>
+        </div>
+
+        <!-- Track 4 -->
+        <div class="cyber-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <span class="badge badge-green">TRACK 04</span>
+            <span class="material-symbols-outlined text-green" style="font-size: 2rem;">visibility</span>
+          </div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">COMPUTER VISION</h3>
+          <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.25rem;">
+           Give machines the power to see, understand, and analyze images and video through object detection, recognition, and real-time vision systems.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem;">
+            <span class="badge badge-green">OPENCV</span>
+            <span class="badge badge-green">YOLO</span>
+            <span class="badge badge-green">PYTORCH</span>
+          </div>
+          <button class="btn btn-outline-cyan btn-sm btn-select-track" data-track="COMPUTER VISION"
+            style="width: 100%;">
+            SELECT THIS TRACK
+          </button>
+        </div>
+
+        <!-- Track 5 -->
+        <div class="cyber-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <span class="badge badge-red">TRACK 05</span>
+            <span class="material-symbols-outlined text-red" style="font-size: 2rem;">layers</span>
+          </div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">FULL STACK DEVELOPMENT</h3>
+          <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.25rem;">
+            Build scalable end-to-end web applications with modern frontend, backend, databases, APIs, authentication, and real-world cloud deployment.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem;">
+            <span class="badge badge-red">REACT</span>
+            <span class="badge badge-red">NODE.JS</span>
+            <span class="badge badge-red">MONGODB</span>
+          </div>
+          <button class="btn btn-outline-cyan btn-sm btn-select-track" data-track="FULL STACK DEVELOPMENT"
+            style="width: 100%;">
+            SELECT THIS TRACK
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGISTER TEAM SECTION (LEADER FLOW) -->
+    <section id="register" style="padding: 3rem 0; border-top: 1px solid var(--border);">
+      <div style="max-width: 900px; margin: 0 auto;">
+        <div style="margin-bottom: 2rem; text-align: center;">
+          <div
+            style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); font-size: 0.8rem; margin-bottom: 0.5rem;">
+            <span class="material-symbols-outlined">group_add</span> STEP 1: INITIALIZE SQUAD
+          </div>
+          <h2>TEAM LEADER REGISTRATION</h2>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Registering as a team leader automatically provisions your team in Supabase and generates a
+            <strong class="text-cyan">Unique Student Verification Code</strong> for your teammates to join.
+          </p>
+        </div>
+
+        <form id="form-create-team" class="cyber-card cyber-card-glow corner-accent">
+          <!-- Section 1: Squad Information -->
+          <div style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
+            <h3 style="font-size: 1.1rem; color: var(--primary); display: flex; align-items: center; gap: 0.5rem;">
+              <span class="material-symbols-outlined">terminal</span> Squad Designation
+            </h3>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="team-name">Team Name *</label>
+              <input type="text" id="team-name" class="form-input" placeholder="e.g. CYBER_NINJAS_X" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="team-track">Challenge Track *</label>
+              <select id="team-track" class="form-select" required>
+                <option value="AI / MACHINE LEARNING">AI / MACHINE LEARNING</option>
+                <option value="DATA SCIENCE">DATA SCIENCE</option>
+                <option value="DEVOPS & CLOUD">DEVOPS & CLOUD</option>
+                <option value="COMPUTER VISION">COMPUTER VISION</option>
+                <option value="FULL STACK DEVELOPMENT">FULL STACK DEVELOPMENT</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="team-abstract">Project Abstract / Proposed Architecture</label>
+            <textarea id="team-abstract" class="form-textarea"
+              placeholder="Brief 2-3 sentence overview of the prototype you plan to build..."></textarea>
+          </div>
+
+          <!-- Section 2: Leader Credentials -->
+          <div style="margin: 1.5rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">
+            <h3 style="font-size: 1.1rem; color: var(--secondary); display: flex; align-items: center; gap: 0.5rem;">
+              <span class="material-symbols-outlined">person_pin</span> Team Leader Credentials
+            </h3>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="leader-name">Full Name *</label>
+              <input type="text" id="leader-name" class="form-input" placeholder="e.g. Alex Morgan" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="leader-email">Leader Email (Gmail / University) *</label>
+              <input type="email" id="leader-email" class="form-input" placeholder="e.g. alex.srm@gmail.com" required>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="leader-college">College / University Name *</label>
+              <input type="text" id="leader-college" class="form-input"
+                placeholder="e.g. SRM Institute of Science and Technology"
+                value="SRM Institute of Science and Technology" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="leader-roll">Student ID / Roll Number *</label>
+              <input type="text" id="leader-roll" class="form-input" placeholder="e.g. RA2211003010452" required>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="form-group">
+              <label class="form-label" for="leader-course">Course *</label>
+              <input type="text" id="leader-course" class="form-input" placeholder="e.g. B.Tech / BCA" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="leader-branch">Branch *</label>
+              <input type="text" id="leader-branch" class="form-input" placeholder="e.g. CSE / IT / ECE" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="leader-section">Section *</label>
+              <input type="text" id="leader-section" class="form-input" placeholder="e.g. Sec A / Sec 1" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="leader-phone">Phone Number *</label>
+            <input type="tel" id="leader-phone" class="form-input" placeholder="+91 98765 43210" required>
+          </div>
+
+          <div style="margin-top: 1.5rem; text-align: center;">
+            <button type="submit" class="btn btn-primary" style="min-width: 250px;">
+              <span class="material-symbols-outlined">rocket_launch</span>
+              <span>GENERATE TEAM &amp; GET UNIQUE CODE</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- JOIN WITH UNIQUE CODE SECTION (TEAMMATE FLOW) -->
+    <section id="join" style="padding: 3rem 0; border-top: 1px solid var(--border);">
+      <div style="max-width: 900px; margin: 0 auto;">
+        <div style="margin-bottom: 2rem; text-align: center;">
+          <div
+            style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--secondary); font-size: 0.8rem; margin-bottom: 0.5rem;">
+            <span class="material-symbols-outlined">vpn_key</span> STEP 2: VERIFY &amp; JOIN SQUAD
+          </div>
+          <h2>TEAMMATE REGISTRATION</h2>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Enter the unique verification code generated by your Team Leader (e.g. <code>SRM-2026-XXXXXX</code>) to
+            verify the squad and confirm your member registration.
+          </p>
+        </div>
+
+        <div class="cyber-card corner-accent" style="margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.05rem; color: var(--primary); margin-bottom: 1rem;">1. VERIFY SQUAD INVITATION CODE
+          </h3>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <input type="text" id="join-team-code" class="form-input"
+              placeholder="ENTER UNIQUE CODE (e.g. SRM-2026-X8K9L2)"
+              style="flex: 1; min-width: 260px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">
+            <button type="button" id="btn-verify-team-code" class="btn btn-outline-cyan">
+              <span class="material-symbols-outlined">verified</span>
+              <span>VERIFY CODE</span>
+            </button>
+          </div>
+
+          <!-- Real-Time Team Preview -->
+          <div id="team-verify-preview"
+            style="display: none; margin-top: 1.25rem; padding: 1rem; background: rgba(0, 254, 102, 0.05); border: 1px solid rgba(0, 254, 102, 0.3);">
+            <div
+              style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+              <div
+                style="display: flex; align-items: center; gap: 0.5rem; color: var(--secondary); font-weight: 700; font-size: 0.85rem;">
+                <span class="material-symbols-outlined">check_circle</span> SQUAD VERIFIED IN SUPABASE DATABASE
+              </div>
+              <div id="verify-team-capacity"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <span class="text-muted" style="font-size: 0.75rem;">TEAM NAME:</span>
+                <div id="verify-team-name" class="font-display text-bright"
+                  style="font-size: 1.2rem; font-weight: 800;"></div>
+              </div>
+              <div>
+                <span class="text-muted" style="font-size: 0.75rem;">TRACK:</span>
+                <div id="verify-team-track" class="text-cyan" style="font-weight: 700;"></div>
+              </div>
+              <div>
+                <span class="text-muted" style="font-size: 0.75rem;">SYSTEM ID:</span>
+                <div id="verify-team-id"
+                  style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teammate Profile Input Form -->
+        <form id="form-join-teammate" class="cyber-card">
+          <h3
+            style="font-size: 1.05rem; color: var(--text-bright); margin-bottom: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">
+            2. ENTER MEMBER CREDENTIALS
+          </h3>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="member-name">Teammate Full Name *</label>
+              <input type="text" id="member-name" class="form-input" placeholder="e.g. Jordan Smith" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="member-email">Teammate Email *</label>
+              <input type="email" id="member-email" class="form-input" placeholder="e.g. jordan.smith@gmail.com"
+                required>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="member-college">College / University Name *</label>
+              <input type="text" id="member-college" class="form-input"
+                placeholder="e.g. SRM Institute of Science and Technology"
+                value="SRM Institute of Science and Technology" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="member-roll">Student ID / Roll Number *</label>
+              <input type="text" id="member-roll" class="form-input" placeholder="e.g. RA2211003010890" required>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="form-group">
+              <label class="form-label" for="member-course">Course *</label>
+              <input type="text" id="member-course" class="form-input" placeholder="e.g. B.Tech / BCA" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="member-branch">Branch *</label>
+              <input type="text" id="member-branch" class="form-input" placeholder="e.g. CSE / IT / ECE" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="member-section">Section *</label>
+              <input type="text" id="member-section" class="form-input" placeholder="e.g. Sec B / Sec 2" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="member-phone">Phone Number *</label>
+            <input type="tel" id="member-phone" class="form-input" placeholder="+91 98765 12345" required>
+          </div>
+
+          <div style="margin-top: 1.5rem; text-align: center;">
+            <button type="submit" class="btn btn-outline-green" style="min-width: 220px;">
+              <span class="material-symbols-outlined">how_to_reg</span>
+              <span>COMPLETE INDUCTION</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- LIVE TELEMETRY & STUDENT AWARENESS FEED -->
+    <section id="updates" style="padding: 3rem 0; border-top: 1px solid var(--border);">
+      <div
+        style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div
+            style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary); font-size: 0.8rem; margin-bottom: 0.5rem;">
+            <span class="pulse-dot"></span> LIVE BROADCAST STREAM
+          </div>
+          <h2>STUDENT AWARENESS FEED</h2>
+          <p class="text-muted" style="font-size: 0.9rem;">Real-time official announcements, deadline extensions, and
+            judging schedule notifications.</p>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <input type="text" id="announcements-search" class="form-input" placeholder="Search broadcasts..."
+            style="font-size: 0.8rem; padding: 0.5rem 0.85rem; width: 220px;">
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; overflow-x: auto; padding-bottom: 0.5rem;">
+        <button class="btn btn-sm btn-outline-cyan announcement-tab active" data-category="ALL">ALL BROADCASTS</button>
+        <button class="btn btn-sm btn-outline-cyan announcement-tab" data-category="Alert">URGENT ALERTS</button>
+        <button class="btn btn-sm btn-outline-cyan announcement-tab" data-category="Schedule">SCHEDULE</button>
+        <button class="btn btn-sm btn-outline-cyan announcement-tab" data-category="Workshop">WORKSHOPS</button>
+        <button class="btn btn-sm btn-outline-cyan announcement-tab" data-category="Judging">JUDGING</button>
+      </div>
+
+      <!-- Announcements Container -->
+      <div id="announcements-feed"></div>
+    </section>
+
+    <!-- STATUS CHECK & STUDENT PASSCARD -->
+    <section id="status" style="padding: 3rem 0; border-top: 1px solid var(--border);">
+      <div style="max-width: 900px; margin: 0 auto;">
+        <div style="margin-bottom: 2rem; text-align: center;">
+          <div
+            style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); font-size: 0.8rem; margin-bottom: 0.5rem;">
+            <span class="material-symbols-outlined">search_check</span> VERIFY ENROLLMENT
+          </div>
+          <h2>REGISTRATION STATUS CHECK</h2>
+          <p class="text-muted" style="font-size: 0.9rem;">
+            Enter your Unique Verification Code, Team Name, or Registered Email to view verified team status and digital
+            pass.
+          </p>
+        </div>
+
+        <form id="form-status-check" class="cyber-card" style="margin-bottom: 2rem;">
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <input type="text" id="status-query" class="form-input" placeholder="ENTER CODE, EMAIL, OR ROLL NUMBER"
+              style="flex: 1; min-width: 250px;" required>
+            <button type="submit" class="btn btn-primary">
+              <span class="material-symbols-outlined">search</span>
+              <span>QUERY REGISTRY</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Status Result Card -->
+        <div id="status-result-card" class="cyber-card corner-accent status-badge-card"
+          style="display: none; border-color: var(--secondary);">
+          <div
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                <span class="badge badge-green">STATUS: VERIFIED &amp; CONFIRMED</span>
+                <span id="res-team-capacity"></span>
+              </div>
+              <h2 id="res-team-name" class="text-bright" style="margin-top: 0.4rem; font-size: 1.6rem;"></h2>
+            </div>
+            <button id="btn-print-pass" class="btn btn-outline-green btn-sm">
+              <span class="material-symbols-outlined">print</span> PRINT PASSCARD
+            </button>
+          </div>
+
+          <div class="grid-3" style="margin-bottom: 1.5rem;">
+            <div>
+              <span class="text-muted" style="font-size: 0.75rem;">CHALLENGE TRACK:</span>
+              <div id="res-team-track" class="text-cyan" style="font-weight: 700; margin-top: 0.2rem;"></div>
+            </div>
+            <div>
+              <span class="text-muted" style="font-size: 0.75rem;">SYSTEM TEAM ID:</span>
+              <div id="res-team-id" style="font-family: var(--font-mono); font-size: 0.8rem; margin-top: 0.2rem;"></div>
+            </div>
+            <div>
+              <span class="text-muted" style="font-size: 0.75rem;">STUDENT INVITE CODE:</span>
+              <div id="res-unique-code" class="text-green font-display"
+                style="font-size: 1.1rem; font-weight: 800; margin-top: 0.2rem;"></div>
+            </div>
+          </div>
+
+          <h3 style="font-size: 0.95rem; color: var(--text-bright); margin-bottom: 0.75rem;">VERIFIED TEAM ROSTER</h3>
+          <div id="res-roster-list" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ & RULES SECTION -->
+    <section id="faq" style="padding: 3rem 0; border-top: 1px solid var(--border);">
+      <div style="max-width: 900px; margin: 0 auto;">
+        <div style="margin-bottom: 2rem; text-align: center;">
+          <div
+            style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); font-size: 0.8rem; margin-bottom: 0.5rem;">
+            <span class="material-symbols-outlined">help</span> GUIDELINES
+          </div>
+          <h2>FREQUENTLY ASKED QUESTIONS</h2>
+          <p class="text-muted" style="font-size: 0.9rem;">Important details regarding eligibility, team size,
+            evaluation, and hardware provisioning.</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <div class="cyber-card faq-item open">
+            <div class="faq-trigger"
+              style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+              <h3 style="font-size: 1rem; color: var(--text-bright);">What is the maximum team size for SRM Hackathon
+                2026?</h3>
+              <span class="material-symbols-outlined text-cyan">expand_more</span>
+            </div>
+            <div class="faq-content"
+              style="margin-top: 0.75rem; color: var(--text-dim); font-size: 0.85rem; line-height: 1.6;">
+              Each squad has a strict <strong class="text-cyan">maximum capacity of 4 members</strong> (1 Team Leader +
+              up to 3 Teammates). Once 4 members are registered, the team's verification code is automatically locked by
+              the system and cannot accept additional members.
+            </div>
+          </div>
+
+          <div class="cyber-card faq-item">
+            <div class="faq-trigger"
+              style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+              <h3 style="font-size: 1rem; color: var(--text-bright);">How does the Unique Student Verification Code
+                work?</h3>
+              <span class="material-symbols-outlined text-cyan">expand_more</span>
+            </div>
+            <div class="faq-content"
+              style="margin-top: 0.75rem; color: var(--text-dim); font-size: 0.85rem; line-height: 1.6;">
+              When the Team Leader creates the team, a unique verification code (e.g. <code>SRM-2026-ABC123</code>) is
+              generated automatically. The leader shares this code with their teammates. Teammates enter this code in
+              the "Join with Code" section to be inducted directly into the squad database.
+            </div>
+          </div>
+
+          <div class="cyber-card faq-item">
+            <div class="faq-trigger"
+              style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+              <h3 style="font-size: 1rem; color: var(--text-bright);">Are hardware kits provided on-site for Track 4
+                (IoT & Healthcare)?</h3>
+              <span class="material-symbols-outlined text-cyan">expand_more</span>
+            </div>
+            <div class="faq-content"
+              style="margin-top: 0.75rem; color: var(--text-dim); font-size: 0.85rem; line-height: 1.6;">
+              Yes! SRM Tech Park Labs will provide ESP32 modules, biometric sensors, LoRa gateways, and soldering
+              benches. Teams are also welcome to bring their own proprietary development boards.
+            </div>
+          </div>
+
+          <div class="cyber-card faq-item">
+            <div class="faq-trigger"
+              style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+              <h3 style="font-size: 1rem; color: var(--text-bright);">What are the judging criteria?</h3>
+              <span class="material-symbols-outlined text-cyan">expand_more</span>
+            </div>
+            <div class="faq-content"
+              style="margin-top: 0.75rem; color: var(--text-dim); font-size: 0.85rem; line-height: 1.6;">
+              Prototypes are evaluated on: Technical Complexity (30%), Real-World Viability & Innovation (25%), Design &
+              User Experience (20%), Completeness of Demo (15%), and Pitch Presentation (10%).
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / HELPDESK SECTION -->
+    <section id="contact" style="padding: 3rem 0; border-top: 1px solid var(--border);">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div style="margin-bottom: 2rem; text-align: center;">
+          <div
+            style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary); font-size: 0.8rem; margin-bottom: 0.5rem;">
+            <span class="material-symbols-outlined">support_agent</span> 24/7 HELPDESK
+          </div>
+          <h2>TRANSMIT INQUIRY / REPORT ISSUE</h2>
+          <p class="text-muted" style="font-size: 0.9rem;">Need clarification or technical assistance? Send a ticket
+            directly to the organizing committee.</p>
+        </div>
+
+        <form id="form-contact-support" class="cyber-card corner-accent">
+          <div class="grid-2">
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Your Full Name *</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="e.g. Priyanshu Sharma" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email Address *</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="e.g. priyanshu@srm.edu.in"
+                required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-category">Inquiry Category *</label>
+            <select id="contact-category" class="form-select">
+              <option value="Registration & Codes">Registration & Verification Codes</option>
+              <option value="Hardware & Lab Support">Hardware & Lab Support</option>
+              <option value="Accommodation & Travel">Accommodation & Travel</option>
+              <option value="Problem Statements & Track Rules">Problem Statements & Track Rules</option>
+              <option value="General Support">General Support</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Message / Question *</label>
+            <textarea id="contact-message" class="form-textarea" placeholder="Describe your query or issue in detail..."
+              required></textarea>
+          </div>
+
+          <div style="text-align: center; margin-top: 1.5rem;">
+            <button type="submit" class="btn btn-primary" style="min-width: 220px;">
+              <span class="material-symbols-outlined">send</span> TRANSMIT TICKET
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer
+    style="background: var(--bg-dim); border-top: 1px solid var(--border); padding: 2.5rem 1.5rem; text-align: center; font-size: 0.82rem; color: var(--text-dim);">
+    <div
+      style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span class="brand-badge">SRM-2026</span>
+        <span style="color: var(--text-main); font-weight: 700;">SRM HACKATHON OPERATIONS PORTAL</span>
+      </div>
+      <div>
+        <span>SRM Institute of Science and Technology, Delhi-NCR Campus, Muradnagar, Ghaziabad, UP</span>
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <a href="admin.html" class="text-cyan" style="text-decoration: none;">Admin Access</a>
+        <a href="#hero" class="text-muted" style="text-decoration: none;">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- MODAL: TEAM CREATED WITH UNIQUE CODE -->
+  <div id="modal-team-created" class="modal-backdrop">
+    <div class="modal-box corner-accent" style="text-align: center;">
+      <div
+        style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(0, 240, 255, 0.1); border: 2px solid var(--primary); border-radius: 50%; margin-bottom: 1rem;">
+        <span class="material-symbols-outlined text-cyan" style="font-size: 2.2rem;">verified</span>
+      </div>
+
+      <h2 style="font-size: 1.5rem; color: var(--text-bright); margin-bottom: 0.25rem;">SQUAD REGISTERED!</h2>
+      <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 1.5rem;">Your team has been securely provisioned
+        in the Supabase database.</p>
+
+      <div class="cyber-card"
+        style="background: var(--surface-high); padding: 1.25rem; margin-bottom: 1.5rem; text-align: left;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span class="text-muted" style="font-size: 0.75rem;">TEAM NAME:</span>
+          <span id="created-team-name" class="text-bright" style="font-weight: 700;"></span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span class="text-muted" style="font-size: 0.75rem;">TRACK:</span>
+          <span id="created-team-track" class="text-cyan" style="font-weight: 600;"></span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span class="text-muted" style="font-size: 0.75rem;">LEADER:</span>
+          <span id="created-leader-name" class="text-green" style="font-weight: 600;"></span>
+        </div>
+      </div>
+
+      <!-- Unique Verification Code Box -->
+      <div
+        style="background: rgba(0, 240, 255, 0.06); border: 1px dashed var(--primary); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <div style="font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.08em; margin-bottom: 0.35rem;">UNIQUE
+          STUDENT VERIFICATION CODE:</div>
+        <div id="created-unique-code" class="font-display text-cyan glow-cyan"
+          style="font-size: 2rem; font-weight: 800; letter-spacing: 0.1em; user-select: all;"></div>
+        <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 0.5rem;">Share this code with teammates so
+          they can join your squad!</div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+        <button id="btn-copy-code" class="btn btn-primary">
+          <span class="material-symbols-outlined">content_copy</span> COPY CODE
+        </button>
+        <a id="btn-share-whatsapp" target="_blank" class="btn btn-outline-green">
+          <span class="material-symbols-outlined">share</span> SHARE WHATSAPP
+        </a>
+        <button class="btn btn-outline-cyan" onclick="closeModal('modal-team-created')">
+          DONE
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: MEMBER JOINED CONFIRMATION -->
+  <div id="modal-member-joined" class="modal-backdrop">
+    <div class="modal-box corner-accent" style="text-align: center;">
+      <div
+        style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(0, 254, 102, 0.1); border: 2px solid var(--secondary); border-radius: 50%; margin-bottom: 1rem;">
+        <span class="material-symbols-outlined text-green" style="font-size: 2.2rem;">how_to_reg</span>
+      </div>
+
+      <h2 style="font-size: 1.5rem; color: var(--text-bright); margin-bottom: 0.25rem;">INDUCTION COMPLETE!</h2>
+      <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 1.5rem;">You have successfully joined your squad
+        for SRM Hackathon 2026.</p>
+
+      <div class="cyber-card"
+        style="background: var(--surface-high); padding: 1.25rem; margin-bottom: 1.5rem; text-align: left;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span class="text-muted" style="font-size: 0.75rem;">MEMBER NAME:</span>
+          <span id="joined-member-name" class="text-bright" style="font-weight: 700;"></span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span class="text-muted" style="font-size: 0.75rem;">STUDENT ROLL NO:</span>
+          <span id="joined-member-roll" class="text-dim"></span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span class="text-muted" style="font-size: 0.75rem;">TEAM NAME:</span>
+          <span id="joined-team-name" class="text-cyan" style="font-weight: 700;"></span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span class="text-muted" style="font-size: 0.75rem;">TRACK:</span>
+          <span id="joined-team-track" class="text-green" style="font-weight: 600;"></span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" onclick="closeModal('modal-member-joined')">
+        CONFIRM &amp; CLOSE
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Script Modules -->
+  <script src="js/supabase-client.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/registration.js"></script>
+  <script src="js/status-check.js"></script>
+  <script src="js/announcements.js"></script>
+</body>
+
+</html>
