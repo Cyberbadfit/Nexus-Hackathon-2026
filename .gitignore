@@ -1,0 +1,5 @@
+node_modules/
+.env
+.env.supabase
+*.log
+.DS_Store
