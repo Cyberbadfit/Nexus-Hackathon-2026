@@ -1,7 +1,20 @@
 const assert = require("node:assert/strict");
 const http = require("node:http");
+const fs = require("node:fs");
+const path = require("node:path");
 const test = require("node:test");
 const app = require("../server");
+
+test("Vercel serves static assets before routing API calls", () => {
+  const config = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "..", "vercel.json"), "utf8"),
+  );
+  assert.deepEqual(config.routes[0], { handle: "filesystem" });
+  assert.deepEqual(config.routes[1], {
+    src: "/api/(.*)",
+    dest: "/api/index.js",
+  });
+});
 
 test("health endpoint reports the backend is online", async () => {
   const server = app.listen(0);
