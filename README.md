@@ -25,7 +25,7 @@ A clean registration and operations portal for Nexxathon.
 `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `ENCRYPTION_KEY`, `JWT_SECRET`, `ADMIN_PASSWORD` are required for production. `ALLOWED_ORIGINS` is optional and accepts a comma-separated list.
 
 For LAN testing from a separate frontend, add the computer's current Wi-Fi URL
-(for example, `http://192.168.1.11:8080`) to `ALLOWED_ORIGINS`. The deployed
+(for example, `http://127.0.0.1:8080`) to `ALLOWED_ORIGINS`. The deployed
 site always permits requests back to its own `/api` endpoint, including Vercel
 preview URLs.
 
