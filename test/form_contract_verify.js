@@ -48,3 +48,10 @@ test("the browser API ends stalled requests with a user-visible error", () => {
   assert.match(api, /timeoutMs = 15000/);
   assert.match(api, /The server did not respond/);
 });
+
+test("team WhatsApp invitations include the live registration URL", () => {
+  assert.match(
+    client,
+    /https:\/\/nexus-hackathon-2026-three\.vercel\.app\//,
+  );
+});

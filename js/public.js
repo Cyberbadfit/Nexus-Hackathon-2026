@@ -137,7 +137,7 @@ $("#create-team-form").onsubmit = async (e) => {
     $("#whatsapp").href =
       "https://wa.me/?text=" +
       encodeURIComponent(
-        `Join my Nexxathon team "${d.team?.name || ""}". Team code: ${d.uniqueCode}`,
+        `Join my Nexxathon team "${d.team?.name || ""}". Team code: ${d.uniqueCode}\n\nRegister or join here: https://nexus-hackathon-2026-three.vercel.app/`,
       );
     $("#copy-code").onclick = () =>
       navigator.clipboard
