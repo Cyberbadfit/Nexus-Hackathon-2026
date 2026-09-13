@@ -5,19 +5,16 @@ const path = require("node:path");
 const test = require("node:test");
 const app = require("../server");
 
-test("Vercel uses static assets and a file-based API catch-all", () => {
+test("Vercel serves static assets and rewrites all API paths to Express", () => {
   const config = JSON.parse(
     fs.readFileSync(path.join(__dirname, "..", "vercel.json"), "utf8"),
   );
   assert.equal(config.builds, undefined);
   assert.equal(config.routes, undefined);
   assert.deepEqual(config.rewrites, [
+    { source: "/api/:path*", destination: "/api/index.js" },
     { source: "/admin", destination: "/admin.html" },
   ]);
-  assert.equal(
-    fs.existsSync(path.join(__dirname, "..", "api", "[...path].js")),
-    true,
-  );
 });
 
 test("health endpoint reports the backend is online", async () => {
@@ -59,6 +56,7 @@ test("health endpoint reports the backend is online", async () => {
       environment: "development",
       maxTeamCapacity: 4,
       database: "CONFIGURED",
+      admin: "CONFIGURED",
     });
     assert.match(payload.timestamp, /^\d{4}-\d{2}-\d{2}T/);
     assert.doesNotMatch(

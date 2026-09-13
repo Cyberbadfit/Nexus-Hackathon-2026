@@ -1,4 +1,7 @@
 {
   "version": 2,
-  "rewrites": [{ "source": "/admin", "destination": "/admin.html" }]
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/index.js" },
+    { "source": "/admin", "destination": "/admin.html" }
+  ]
 }

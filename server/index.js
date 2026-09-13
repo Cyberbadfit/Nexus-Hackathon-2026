@@ -30,6 +30,8 @@ app.get("/api/health", (req, res) =>
     maxTeamCapacity: 4,
     database:
       config.supabaseUrl && config.supabaseSecretKey ? "CONFIGURED" : "NOT_CONFIGURED",
+    admin:
+      config.adminPassword && config.jwtSecret ? "CONFIGURED" : "NOT_CONFIGURED",
   }),
 );
 app.use("/api/admin", authRoutes);

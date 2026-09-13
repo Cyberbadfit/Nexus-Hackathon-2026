@@ -3,12 +3,21 @@ const router = express.Router();
 const { verifyAdminPassword } = require("../utils/crypto");
 const { signAdminToken, requireAdminAuth } = require("../middleware/auth");
 const { loginLimiter } = require("../middleware/security");
+const config = require("../config/env");
 
 /**
  * POST /api/admin/login
  * Validates master password '' (no 15-minute lockout)
  */
 router.post("/login", loginLimiter, (req, res) => {
+  if (!config.adminPassword || !config.jwtSecret) {
+    return res.status(503).json({
+      success: false,
+      error:
+        "Admin login is not configured. Add ADMIN_PASSWORD and JWT_SECRET in Vercel Environment Variables, then redeploy.",
+    });
+  }
+
   const { password } = req.body;
 
   if (!password) {
