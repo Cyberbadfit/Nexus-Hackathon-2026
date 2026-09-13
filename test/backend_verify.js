@@ -5,15 +5,19 @@ const path = require("node:path");
 const test = require("node:test");
 const app = require("../server");
 
-test("Vercel serves static assets before routing API calls", () => {
+test("Vercel uses static assets and a file-based API catch-all", () => {
   const config = JSON.parse(
     fs.readFileSync(path.join(__dirname, "..", "vercel.json"), "utf8"),
   );
-  assert.deepEqual(config.routes[0], { handle: "filesystem" });
-  assert.deepEqual(config.routes[1], {
-    src: "/api/(.*)",
-    dest: "/api/index.js",
-  });
+  assert.equal(config.builds, undefined);
+  assert.equal(config.routes, undefined);
+  assert.deepEqual(config.rewrites, [
+    { source: "/admin", destination: "/admin.html" },
+  ]);
+  assert.equal(
+    fs.existsSync(path.join(__dirname, "..", "api", "[...path].js")),
+    true,
+  );
 });
 
 test("health endpoint reports the backend is online", async () => {
