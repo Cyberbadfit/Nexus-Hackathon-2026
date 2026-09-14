@@ -491,10 +491,12 @@ router.patch("/candidates/:id", requireAdminAuth, async (req, res, next) => {
 router.delete("/candidates/:id", requireAdminAuth, async (req, res, next) => {
   try {
     const userId = req.params.id;
-    await supabaseService.deleteUser(userId);
-    return res.json({
+    const result = await supabaseService.deleteParticipant(userId);
+    return res.status(200).json({
       success: true,
-      message: "Candidate deleted successfully",
+      message: "Participant and related team membership deleted successfully",
+      deletedUserId: result.user.id,
+      removedMemberships: result.removedMemberships,
     });
   } catch (err) {
     next(err);

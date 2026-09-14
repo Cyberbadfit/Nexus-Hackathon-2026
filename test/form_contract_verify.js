@@ -6,6 +6,7 @@ const test = require("node:test");
 const root = path.resolve(__dirname, "..");
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const client = fs.readFileSync(path.join(root, "js", "public.js"), "utf8");
+const adminClient = fs.readFileSync(path.join(root, "js", "admin.js"), "utf8");
 const teamRoute = fs.readFileSync(
   path.join(root, "server", "routes", "teamRoutes.js"),
   "utf8",
@@ -40,6 +41,18 @@ test("Supabase write failures cannot be reported as in-memory successes", () => 
   assert.doesNotMatch(service, /memoryCache/);
   assert.match(service, /The database could not save this request/);
   assert.match(service, /SUPABASE_SECRET_KEY/);
+});
+
+test("admin deletion requires Supabase to return the deleted record", () => {
+  assert.match(service, /async deleteOne\(table, id, label\)/);
+  assert.match(service, /returnRepresentation: true/);
+  assert.match(service, /deleted\.length !== 1/);
+  assert.match(service, /async deleteParticipant\(userId\)/);
+  assert.match(service, /deleteTeamMembersByUserId\(userId\)/);
+  assert.match(service, /clearTeamLeadershipByUserId\(userId\)/);
+  assert.match(service, /clearProblemSelectionById\(id\)/);
+  assert.match(adminClient, /participant\.id !== result\.deletedUserId/);
+  assert.match(adminClient, /Participant deleted from the database/);
 });
 
 test("the browser API ends stalled requests with a user-visible error", () => {

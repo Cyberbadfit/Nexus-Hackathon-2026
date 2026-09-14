@@ -92,6 +92,30 @@ ALTER TABLE public.teams
 ALTER COLUMN track
 SET DEFAULT 'Unassigned';
 
+-- CREATE TABLE IF NOT EXISTS does not update foreign keys on an existing
+-- project. Recreate these constraints so deleting an admin-selected
+-- participant cannot be blocked by an older NO ACTION foreign key.
+ALTER TABLE public.team_members
+DROP CONSTRAINT IF EXISTS team_members_user_id_fkey;
+
+ALTER TABLE public.team_members
+ADD CONSTRAINT team_members_user_id_fkey
+FOREIGN KEY (user_id) REFERENCES public.app_users (id) ON DELETE CASCADE;
+
+ALTER TABLE public.teams
+DROP CONSTRAINT IF EXISTS teams_leader_id_fkey;
+
+ALTER TABLE public.teams
+ADD CONSTRAINT teams_leader_id_fkey
+FOREIGN KEY (leader_id) REFERENCES public.app_users (id) ON DELETE SET NULL;
+
+ALTER TABLE public.teams
+DROP CONSTRAINT IF EXISTS teams_problem_statement_id_fkey;
+
+ALTER TABLE public.teams
+ADD CONSTRAINT teams_problem_statement_id_fkey
+FOREIGN KEY (problem_statement_id) REFERENCES public.problem_statements (id) ON DELETE SET NULL;
+
 -- Compatibility-safe capacity trigger: prevents a fifth member in normal concurrent inserts.
 CREATE OR REPLACE FUNCTION public.enforce_team_capacity () RETURNS TRIGGER LANGUAGE plpgsql AS $$
 DECLARE member_count INTEGER;

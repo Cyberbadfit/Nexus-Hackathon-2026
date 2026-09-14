@@ -398,16 +398,22 @@ window.removeParticipant = async (id) => {
   if (!confirm("Delete this participant?")) return;
 
   try {
-    await api(
+    const result = await api(
       "/admin/candidates/" + id,
       {
         method: "DELETE",
       },
     );
 
-    toast("Participant deleted");
+    // The API returns only after Supabase has returned the deleted row. Update
+    // immediately, then re-fetch to keep all dashboard counts in sync.
+    data.participants = data.participants.filter(
+      (participant) => participant.id !== result.deletedUserId,
+    );
+    render();
+    await loadAll();
 
-    loadAll();
+    toast("Participant deleted from the database");
   } catch (e) {
     toast(e.message);
   }
@@ -938,9 +944,9 @@ window.deleteProblem = async (id) => {
       },
     );
 
-    toast("Challenge deleted");
+    await loadAll();
 
-    loadAll();
+    toast("Challenge deleted from the database");
   } catch (e) {
     toast(e.message);
   }
@@ -1182,9 +1188,9 @@ window.deleteUpdate = async (id) => {
       },
     );
 
-    toast("Update deleted");
+    await loadAll();
 
-    loadAll();
+    toast("Update deleted from the database");
   } catch (e) {
     toast(e.message);
   }

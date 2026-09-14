@@ -79,6 +79,29 @@ class SupabaseService {
     return Array.isArray(data) && data[0] ? data[0] : fallback;
   }
 
+  /**
+   * Delete one row and require PostgREST to return the row it actually
+   * removed. A plain DELETE returns 204 even when its filter matched nothing,
+   * which previously let the admin UI claim a record was deleted when it was
+   * still present in Supabase.
+   */
+  async deleteOne(table, id, label) {
+    const deleted = await this.request(table, {
+      method: "DELETE",
+      query: `id=eq.${encodeURIComponent(id)}`,
+      returnRepresentation: true,
+    });
+
+    if (!Array.isArray(deleted) || deleted.length !== 1) {
+      throw new SupabaseRequestError(
+        `${label} was not found or could not be deleted. Refresh the admin panel and try again.`,
+        404,
+      );
+    }
+
+    return deleted[0];
+  }
+
   /* ------------------- TEAMS ------------------- */
   getTeams() {
     return this.request("teams", { query: "select=*&order=created_at.desc" });
@@ -138,11 +161,7 @@ class SupabaseService {
   }
 
   async deleteTeam(id) {
-    await this.request("teams", {
-      method: "DELETE",
-      query: `id=eq.${encodeURIComponent(id)}`,
-    });
-    return true;
+    return this.deleteOne("teams", id, "Team");
   }
 
   /* ------------------- USERS ------------------- */
@@ -199,11 +218,47 @@ class SupabaseService {
   }
 
   async deleteUser(userId) {
-    await this.request("app_users", {
+    return this.deleteOne("app_users", userId, "Participant");
+  }
+
+  async deleteTeamMembersByUserId(userId) {
+    const deleted = await this.request("team_members", {
       method: "DELETE",
-      query: `id=eq.${encodeURIComponent(userId)}`,
+      query: `user_id=eq.${encodeURIComponent(userId)}`,
+      returnRepresentation: true,
     });
-    return true;
+    return Array.isArray(deleted) ? deleted : [];
+  }
+
+  async clearTeamLeadershipByUserId(userId) {
+    const updated = await this.request("teams", {
+      method: "PATCH",
+      query: `leader_id=eq.${encodeURIComponent(userId)}`,
+      body: { leader_id: null, updated_at: new Date().toISOString() },
+      returnRepresentation: true,
+    });
+    return Array.isArray(updated) ? updated : [];
+  }
+
+  async clearProblemSelectionById(problemId) {
+    const updated = await this.request("teams", {
+      method: "PATCH",
+      query: `problem_statement_id=eq.${encodeURIComponent(problemId)}`,
+      body: { problem_statement_id: null, updated_at: new Date().toISOString() },
+      returnRepresentation: true,
+    });
+    return Array.isArray(updated) ? updated : [];
+  }
+
+  /**
+   * Works with both the current cascading schema and older deployments whose
+   * foreign keys were created without ON DELETE CASCADE.
+   */
+  async deleteParticipant(userId) {
+    const removedMemberships = await this.deleteTeamMembersByUserId(userId);
+    await this.clearTeamLeadershipByUserId(userId);
+    const user = await this.deleteUser(userId);
+    return { user, removedMemberships: removedMemberships.length };
   }
 
   /* ------------------- TEAM MEMBERS ------------------- */
@@ -295,11 +350,7 @@ class SupabaseService {
   }
 
   async deleteAnnouncement(id) {
-    await this.request("announcements", {
-      method: "DELETE",
-      query: `id=eq.${encodeURIComponent(id)}`,
-    });
-    return true;
+    return this.deleteOne("announcements", id, "Announcement");
   }
 
   /* ------------------- SUPPORT TICKETS ------------------- */
@@ -394,11 +445,10 @@ class SupabaseService {
   }
 
   async deleteProblem(id) {
-    await this.request("problem_statements", {
-      method: "DELETE",
-      query: `id=eq.${encodeURIComponent(id)}`,
-    });
-    return true;
+    // Keep deletions working for older projects where the problem foreign key
+    // was created without ON DELETE SET NULL.
+    await this.clearProblemSelectionById(id);
+    return this.deleteOne("problem_statements", id, "Problem statement");
   }
 }
 
