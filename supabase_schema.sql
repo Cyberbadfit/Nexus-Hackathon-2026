@@ -95,6 +95,9 @@ SET DEFAULT 'Unassigned';
 -- CREATE TABLE IF NOT EXISTS does not update foreign keys on an existing
 -- project. Recreate these constraints so deleting an admin-selected
 -- participant cannot be blocked by an older NO ACTION foreign key.
+ALTER TABLE public.teams
+ADD COLUMN IF NOT EXISTS problem_statement_id UUID;
+
 ALTER TABLE public.team_members
 DROP CONSTRAINT IF EXISTS team_members_user_id_fkey;
 
