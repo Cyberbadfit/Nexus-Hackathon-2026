@@ -397,3 +397,15 @@ textarea {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+@media (max-width: 480px) {
+  .event-details {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .event-detail {
+    padding: 13px 14px;
+  }
+}
